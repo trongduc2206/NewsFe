@@ -1,0 +1,35 @@
+.p {
+    /*font-size: 18px;*/
+    font-weight: 400;
+    font-family: Arial;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex: 7
+}
+. ant-breadcrumb {
+    font-size: 1vw !important;
+}
+/*a {*/
+/*    !*font-size: 1vw !important;*!*/
+/*    font-size: 1vw ;*/
+/*}*/
+.link {
+    font-size: 1vw;
+}
+a:link, a:visited {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+a:hover {
+    color: #1e90ff !important;
+}
+.ant-comment {
+    font-size: 1vw !important;
+}
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}

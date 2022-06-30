@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="59da3605-7621-4f38-89c5-505f05181d1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/homePage/homePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/homePage/topicHomepage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/layout/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/layout/layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/layout/layoutTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/layout/loginModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/comment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsDetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsShortcut.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsSpotLight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsTopics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/saga/reducer/authReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/repository/impl/AccountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/repository/impl/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/repository/impl/SlotRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/repository/impl/StationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/service/impl/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/service/impl/BaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/service/impl/StationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/service-worker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/serviceWorkerRegistration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/view/fxml/update_station.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27hvjUt4B7sMcQSGU9n26JCTe7D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsFE/news-fe&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\NewsFE\news-fe\src\saga" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Workspace\NewsFE\news-fe\src\components" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="59da3605-7621-4f38-89c5-505f05181d1a" name="Default Changelist" comment="" />
+      <created>1649785267163</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649785267163</updated>
+      <workItem from="1649785268247" duration="325000" />
+      <workItem from="1650997478698" duration="867000" />
+      <workItem from="1650998367860" duration="1353000" />
+      <workItem from="1651223051598" duration="596000" />
+      <workItem from="1652367860602" duration="146000" />
+      <workItem from="1652368052203" duration="722000" />
+      <workItem from="1652369798440" duration="2043000" />
+      <workItem from="1652628033560" duration="5621000" />
+      <workItem from="1652761264774" duration="4187000" />
+      <workItem from="1652892254027" duration="2908000" />
+      <workItem from="1652936183714" duration="8569000" />
+      <workItem from="1653280449246" duration="8881000" />
+      <workItem from="1653403201187" duration="15088000" />
+      <workItem from="1653713963835" duration="19696000" />
+      <workItem from="1653829630649" duration="9913000" />
+      <workItem from="1653972797289" duration="7197000" />
+      <workItem from="1653995147662" duration="9737000" />
+      <workItem from="1654088089085" duration="5240000" />
+      <workItem from="1654103235995" duration="9000" />
+      <workItem from="1654138883794" duration="4453000" />
+      <workItem from="1654276772908" duration="8135000" />
+      <workItem from="1654446485681" duration="3650000" />
+      <workItem from="1654572731347" duration="17912000" />
+      <workItem from="1654690685838" duration="30621000" />
+      <workItem from="1655010890765" duration="19467000" />
+      <workItem from="1655142012129" duration="18983000" />
+      <workItem from="1655314340782" duration="5488000" />
+      <workItem from="1655486040830" duration="5188000" />
+      <workItem from="1655524959448" duration="9156000" />
+      <workItem from="1655784636585" duration="584000" />
+      <workItem from="1655824744199" duration="4728000" />
+      <workItem from="1655994849086" duration="25195000" />
+      <workItem from="1656260064923" duration="644000" />
+      <workItem from="1656350976266" duration="5411000" />
+      <workItem from="1656425731645" duration="1103000" />
+      <workItem from="1656430275024" duration="5689000" />
+      <workItem from="1656504390464" duration="3839000" />
+      <workItem from="1656562599554" duration="9610000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/news/newsList.js</url>
+          <line>74</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
