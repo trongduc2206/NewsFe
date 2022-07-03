@@ -23,6 +23,7 @@ import TopicService from "../../service/topic.service";
 import CommentService from "../../service/comment.service";
 import {useBeforeunload} from 'react-beforeunload';
 import InteractNewsService from "../../service/interact-news.service";
+import {NewsRelevant} from "./newsRelevant";
 
 export function NewsDetail(props) {
     let navigate = useNavigate();
@@ -34,36 +35,37 @@ export function NewsDetail(props) {
     const {topic, scroll, isScroll} = props
     const [data, setData] = useState(null)
     const [sameTopicData, setSameTopicData] = useState([])
+    const [relevantData, setRelevantData] = useState([])
     const [copied, setCopied] = useState(false)
     const [saved, setSaved] = useState(null)
     const [parentTopic, setParentTopic] = useState(null)
     const [commentForm] = Form.useForm();
-    const relevantData = [
-        {
-            title: 'Title 1',
-            content: 'Abstract 1'
-        },
-        {
-            title: 'Title 2',
-            content: 'Abstract 1'
-        },
-        {
-            title: 'Title 3',
-            content: 'Abstract 1'
-        },
-        {
-            title: 'Title 4',
-            content: 'Abstract 1'
-        },
-        {
-            title: 'Title 5',
-            content: 'Abstract 1'
-        },
-        {
-            title: 'Title 6',
-            content: 'Abstract 1'
-        },
-    ];
+    // const relevantData = [
+    //     {
+    //         title: 'Title 1',
+    //         content: 'Abstract 1'
+    //     },
+    //     {
+    //         title: 'Title 2',
+    //         content: 'Abstract 1'
+    //     },
+    //     {
+    //         title: 'Title 3',
+    //         content: 'Abstract 1'
+    //     },
+    //     {
+    //         title: 'Title 4',
+    //         content: 'Abstract 1'
+    //     },
+    //     {
+    //         title: 'Title 5',
+    //         content: 'Abstract 1'
+    //     },
+    //     {
+    //         title: 'Title 6',
+    //         content: 'Abstract 1'
+    //     },
+    // ];
 
     const topViewsTitle = ['title 1', 'title 2', 'title 3'];
     const onBackClick = () => {
@@ -103,7 +105,7 @@ export function NewsDetail(props) {
                 if (response.data.data) {
                     console.log(response.data.data)
                     setData(response.data.data)
-                    if(response.data.data.topicLv3) {
+                    if (response.data.data.topicLv3) {
                         // NewsService.getNewsByTopicKey(response.data.data.topicLv1.topicKey, 3, 0).then(
                         NewsService.getTitleSameTopic(response.data.data.topicLv3.topicKey, response.data.data.id).then(
                             response => {
@@ -160,6 +162,13 @@ export function NewsDetail(props) {
         const newsId = params.id
         console.log(newsId)
         getData(newsId)
+        NewsService.getRelevant(newsId).then(
+            response => {
+                if (response.data.data) {
+                    setRelevantData(response.data.data)
+                }
+            }
+        )
 
         if (currentUser !== null) {
             NewsService.checkNewsSavedByUser(currentUser.id, newsId).then(
@@ -184,7 +193,7 @@ export function NewsDetail(props) {
     const renderBreadcrumbTopic = (n) => {
         const topicLv1Href = '/topic/' + n.topicLv1.topicKey
         const topicLv2Href = '/topic/' + n.topicLv2.topicKey
-        if(n.topicLv3) {
+        if (n.topicLv3) {
             const topicLv3Href = '/topic/' + n.topicLv3.topicKey
             return (
                 <Breadcrumb>
@@ -572,11 +581,18 @@ export function NewsDetail(props) {
                                 : null)
                             : null
                     }
-                    <div>
-                        <Divider></Divider>
-                        <h1>Liên quan</h1>
-                        {/*<NewsList data={relevantData}></NewsList>*/}
-                    </div>
+                    {
+                        relevantData.length > 0 ?
+                            <div>
+                                <Divider></Divider>
+                                <h1 style={{color: "#1e90ff"}}>Liên quan</h1>
+
+                                {/*<NewsList data={relevantData} isPagination={false}></NewsList>*/}
+                                <NewsRelevant data={relevantData}/>
+                            </div>
+                            : null
+                    }
+
                 </div>
                 <div style={{
                     flex: 2,
@@ -591,23 +607,23 @@ export function NewsDetail(props) {
                         <h1 style={{color: "#1e90ff"}}>Cùng chủ đề</h1>
                         {/*<Divider style={{color: "#1e90ff"}}></Divider>*/}
                         {/*<NewsShortcut></NewsShortcut>*/}
-                        {sameTopicData && sameTopicData.length > 0?
+                        {sameTopicData && sameTopicData.length > 0 ?
                             sameTopicData.map((newData) => {
-                            return (
-                                <div>
-                                    <Divider style={{marginTop: '7px', marginBottom: '7px'}}></Divider>
-                                    <a
-                                        class='link'
-                                        href={"/news/" + newData.id}
-                                        style={{fontWeight: 600}}
-                                    >
-                                        {/*<h3>{newData.title} </h3>*/}
-                                        {newData.title}
-                                    </a>
-                                </div>
-                            )
-                        })
-                            :null
+                                return (
+                                    <div>
+                                        <Divider style={{marginTop: '7px', marginBottom: '7px'}}></Divider>
+                                        <a
+                                            class='link'
+                                            href={"/news/" + newData.id}
+                                            style={{fontWeight: 600}}
+                                        >
+                                            {/*<h3>{newData.title} </h3>*/}
+                                            {newData.title}
+                                        </a>
+                                    </div>
+                                )
+                            })
+                            : null
                         }
                     </div>
                 </div>
@@ -615,6 +631,7 @@ export function NewsDetail(props) {
         </div>
     )
 }
+
 const mapStateToProps = (state) => {
     // console.log(state.object.loginStatus)
     // console.log(state.object.userName)

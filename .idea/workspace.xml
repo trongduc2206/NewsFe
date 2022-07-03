@@ -20,8 +20,8 @@
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/comment.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsDetail.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsRelevant.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsShortcut.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsSpotLight.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/components/news/newsTopics.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/NewsFE/news-fe/src/saga/reducer/authReducer.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/TKXDPM/tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/src/repository/impl/AccountRepository.java" afterDir="false" />
@@ -34,6 +34,15 @@
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/service-worker.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/serviceWorkerRegistration.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/view/fxml/update_station.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/css/newsDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/newsDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/css/newsSearchResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/newsSearchResult.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homePage/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage/homePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/newsDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/newsSpotLight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsRelevant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/news.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/news.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +58,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,7 +72,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsFE/news-fe&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsAdminFE/news-admin-fe&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -144,7 +153,9 @@
       <workItem from="1656425731645" duration="1103000" />
       <workItem from="1656430275024" duration="5689000" />
       <workItem from="1656504390464" duration="3839000" />
-      <workItem from="1656562599554" duration="9610000" />
+      <workItem from="1656562599554" duration="10003000" />
+      <workItem from="1656695640788" duration="7326000" />
+      <workItem from="1656783359521" duration="12129000" />
     </task>
     <servers />
   </component>

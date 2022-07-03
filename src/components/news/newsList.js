@@ -121,9 +121,9 @@ export function NewsList(props) {
                     xs: 1,
                     sm: 1,
                     md: 2,
-                    lg: 5,
+                    lg: 3,
                     xl: 5,
-                    xxl: 6,
+                    xxl: 3,
                 }}
                 dataSource={data}
                 renderItem={(item) => (

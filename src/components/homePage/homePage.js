@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import TopicHomepage from "./topicHomepage";
 import {Avatar, Card, Carousel, Divider, List, Space} from "antd";
 import {LikeOutlined, MessageOutlined, StarOutlined} from "@ant-design/icons";
-import NewsSpotLight from "../news/newsSpotLight";
+import NewsSpotLight from "../news/newsRelevant";
 import {connect} from "react-redux";
 import TopicService from "../../service/topic.service";
 import NewsService from "../../service/news.service";
@@ -90,7 +90,7 @@ export function HomePage(props) {
         >
             {/*<h1>Hello Các bạn</h1>*/}
             {/*<NewsShortCutBlock></NewsShortCutBlock>*/}
-            {/*<NewsSpotLight data={data}></NewsSpotLight>*/}
+            {/*<NewsRelevant data={data}></NewsRelevant>*/}
             {
                 recommend.length > 0 ?
                 <div>
