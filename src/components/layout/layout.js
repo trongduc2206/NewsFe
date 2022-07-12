@@ -22,18 +22,48 @@ import TopicService from "../../service/topic.service";
 import {NewsSearchResult} from "../news/newsSearchResult";
 import SavedNews from "../news/savedNews";
 import ScrollToTop from "./MainContentContainer";
+import {useForm} from "antd/es/form/Form";
+import FacebookLogin from 'react-facebook-login';
+import UserService from "../../service/user.service";
 
 export function MainLayout(props) {
     const {login, isLogin, username, signup, isSignupSuccess, resetSignupStatus, logout} = props
     const [today, setToday] = useState("")
     const [visibleLogin, setVisibleLogin] = useState(false);
     const [visibleSignup, setVisibleSignup] = useState(false);
-    const [form] = Form.useForm();
     const [logined, setLogined] = useState(false);
     const [topicList, setTopicList] = useState([]);
     const [currentTopicKey, setCurrentTopicKey] = useState([]);
     let params = useParams();
+    const [form] = useForm()
 
+    const responseFacebook = (response) => {
+        console.log(response)
+        const userInfo = {
+            thirdPartyId: response.id,
+            username: response.name,
+            email: response.email,
+            accessToken: response.accessToken,
+            type: 'FACEBOOK'
+        }
+        UserService.signup({thirdPartyId: userInfo.thirdPartyId, type: 'FACEBOOK', username: userInfo.username, email: userInfo.email}).then(
+            response => {
+                const returnId = response.data.data;
+                if(returnId) {
+                    userInfo.id = returnId
+                    localStorage.setItem("user", JSON.stringify(userInfo));
+                    window.location.reload();
+                }
+            }
+        )
+        // localStorage.setItem("user", JSON.stringify(userInfo));
+        // window.location.reload();
+
+    }
+
+    const componentClicked = (data) => {
+            console.log(data)
+    }
     const onMenuClick = (e) => {
         debugger
         if (currentUser) {
@@ -287,6 +317,25 @@ export function MainLayout(props) {
         console.log(params.topicKey)
 
         window.scrollTo(0, 0);
+
+        // window.fbAsyncInit = function() {
+        //     let FB;
+        //     FB.init({
+        //         appId: '571704337888304',
+        //         cookie: true,  // enable cookies to allow the server to access
+        //         // the session
+        //         xfbml: true,  // parse social plugins on this page
+        //         version: 'v2.1' // use version 2.1
+        //     })
+        //
+        //     (function(d, s, id){
+        //         var js, fjs = d.getElementsByTagName(s)[0];
+        //         if (d.getElementById(id)) {return;}
+        //         js = d.createElement(s); js.id = id;
+        //         js.src = "https://connect.facebook.net/en_US/sdk.js";
+        //         fjs.parentNode.insertBefore(js, fjs);
+        //     }(document, 'script', 'facebook-jssdk'));
+        // }
     }, [isSignupSuccess])
 
     const processCurrentDate = (date) => {
@@ -383,6 +432,7 @@ export function MainLayout(props) {
                         padding: 0
                     }}
                 >
+
                     <div style={{
                         display: 'flex',
                         height: '45px'
@@ -617,10 +667,17 @@ export function MainLayout(props) {
                             <p>Đăng nhập với</p>
                             <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                                 <div style={{display: "flex", marginTop: "10px"}}>
-                                    <FacebookOutlined style={{fontSize: "32px", marginRight: "5px"}}></FacebookOutlined>
-                                    <Button>
-                                        Facebook
-                                    </Button>
+                                    {/*<FacebookOutlined style={{fontSize: "32px", marginRight: "5px"}}></FacebookOutlined>*/}
+                                    {/*<Button>*/}
+                                    {/*    Facebook*/}
+                                    {/*</Button>*/}
+                                    <FacebookLogin
+                                        size='small'
+                                        appId="571704337888304"
+                                        autoLoad={false}
+                                        fields="name,email,picture"
+                                        onClick={componentClicked}
+                                        callback={responseFacebook} />
                                 </div>
                                 <div style={{display: "flex", marginTop: "15px"}}>
                                     <GoogleOutlined style={{fontSize: "32px", marginRight: "5px"}}></GoogleOutlined>

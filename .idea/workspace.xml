@@ -34,15 +34,11 @@
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/service-worker.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/serviceWorkerRegistration.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/view/fxml/update_station.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/css/newsDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/newsDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/css/newsSearchResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/newsSearchResult.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homePage/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage/homePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news/newsDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news/newsSpotLight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsRelevant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/news.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/news.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga/loginSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga/loginSaga.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,20 +65,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsAdminFE/news-admin-fe&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Workspace/NewsFE/news-fe",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\NewsFE\news-fe\src\saga" />
@@ -156,6 +152,12 @@
       <workItem from="1656562599554" duration="10003000" />
       <workItem from="1656695640788" duration="7326000" />
       <workItem from="1656783359521" duration="12129000" />
+      <workItem from="1656871320190" duration="551000" />
+      <workItem from="1656951399467" duration="4944000" />
+      <workItem from="1657247817544" duration="3453000" />
+      <workItem from="1657304887694" duration="1183000" />
+      <workItem from="1657359896652" duration="643000" />
+      <workItem from="1657639589777" duration="8035000" />
     </task>
     <servers />
   </component>
@@ -180,6 +182,12 @@
           <url>file://$PROJECT_DIR$/src/components/news/newsList.js</url>
           <line>74</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/layout/layout.js</url>
+          <line>624</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

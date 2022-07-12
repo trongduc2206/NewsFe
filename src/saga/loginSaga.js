@@ -41,9 +41,17 @@ function* workerLoginSaga(action) {
         window.location.reload();
     } else {
         console.log(error);
-        notification.error({
-            message: 'Đăng nhập thất bại',
-            description: 'Tên đăng nhập hoặc mật khẩu không đúng'
-        })
+        if(error.response.data.status.message !== 'general_error') {
+            console.log(error.response.data.status.message)
+            notification.error({
+                message: 'Đăng nhập thất bại',
+                description: error.response.data.status.message
+            })
+        } else {
+            notification.error({
+                message: 'Đăng nhập thất bại',
+                description: 'Tên đăng nhập hoặc mật khẩu không đúng'
+            })
+        }
     }
 }
