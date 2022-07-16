@@ -57,7 +57,7 @@ export function NewsSearchResult(props) {
 
         const pageToCallApi = page ? parseInt(page) - 1 : 0
 
-        NewsService.search(searchParams.get('q'), 12, pageToCallApi).then(
+        NewsService.search(searchParams.get('q'), 15, pageToCallApi).then(
             response => {
                 if (response.data.data) {
                     setData(response.data.data.content)

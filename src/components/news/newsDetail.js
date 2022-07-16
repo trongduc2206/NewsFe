@@ -164,6 +164,7 @@ export function NewsDetail(props) {
         getData(newsId)
         NewsService.getRelevant(newsId).then(
             response => {
+                console.log("get relevant ", response)
                 if (response.data.data) {
                     setRelevantData(response.data.data)
                 }

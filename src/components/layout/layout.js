@@ -11,7 +11,7 @@ import {
     FacebookOutlined,
     GoogleOutlined,
     HomeOutlined,
-    InstagramFilled, StarTwoTone,
+    InstagramFilled, LayoutTwoTone, LockOutlined, PushpinTwoTone, StarTwoTone,
     UserOutlined
 } from "@ant-design/icons";
 import {BrowserRouter, Route, Switch, Routes, useNavigate, Outlet, useParams, useLocation} from "react-router-dom";
@@ -147,7 +147,7 @@ export function MainLayout(props) {
                         const href = "/topic/" + topic.key
                         // console.log(href);
                         return {
-                            icon: topic.recommended ? <StarTwoTone/> : null,
+                            icon: topic.recommended ? <PushpinTwoTone /> : null,
                             label: <a href={href}>{topic.label}</a>,
                             // label: topic.key,
                             key: topic.key,
@@ -453,7 +453,18 @@ export function MainLayout(props) {
                             display: 'flex',
                             height: '45px'
                         }}>
-                            <div className="logo"/>
+                            <div style={{display: 'flex', flexDirection: 'column' , justifyContent: 'center'}}>
+                                <a href="/">
+                                <LayoutTwoTone style={{ fontSize: '20px', marginLeft: '3px'}} twoToneColor='#096dd9'/>
+                                </a>
+                                {/*<h1 style={{ color:'#096dd9', marginLeft: '3px'}}>News</h1>*/}
+                            </div>
+                            <div style={{display: 'flex', flexDirection: 'column' , justifyContent: 'center'}}>
+                                {/*<LayoutTwoTone style={{ fontSize: '20px'}} twoToneColor='#096dd9'/>*/}
+                                <a href="/">
+                                <span style={{ color:'#096dd9', marginLeft: '3px', fontWeight:'bold', fontSize: '22px'}}>News</span>
+                                </a>
+                            </div>
                             <Divider type="vertical" style={{marginTop: "8px", height: "80%"}}/>
                             {/*<div className='time-now' style={{marginTop: '24px', lineHeight: "0"}}>*/}
                             {/*    <span>{today}</span>*/}
@@ -659,7 +670,7 @@ export function MainLayout(props) {
                                             },
                                         ]}
                                     >
-                                        <Input/>
+                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Tên đăng nhập"/>
                                     </Form.Item>
                                     <Form.Item
                                         name="password"
@@ -671,7 +682,7 @@ export function MainLayout(props) {
                                             },
                                         ]}
                                     >
-                                        <Input.Password/>
+                                        <Input.Password prefix={<LockOutlined className="site-form-item-icon" />}  placeholder="Mật khẩu"/>
                                     </Form.Item>
                                     <Form.Item
                                     >
@@ -730,6 +741,38 @@ export function MainLayout(props) {
                                         <GoogleLogin
                                             onSuccess={(credentialResponse) => {
                                                 console.log(credentialResponse);
+                                                const decodeRequest = {
+                                                    jwt: credentialResponse.credential
+                                                }
+                                                UserService.decodeJwt(decodeRequest).then(
+                                                    response => {
+                                                        if(response.data.data) {
+                                                            console.log(response.data.data)
+                                                            const signupRequest = {
+                                                                type: 'GOOGLE',
+                                                                thirdPartyId: credentialResponse.clientId,
+                                                                email: response.data.data.email,
+                                                                username: response.data.data.name
+                                                            }
+                                                            UserService.signup(signupRequest).then(
+                                                                signupResponse => {
+                                                                    const userInfo = {
+                                                                        id: signupResponse.data.data,
+                                                                        thirdPartyId: credentialResponse.clientId,
+                                                                        email: response.data.data.email,
+                                                                        username: response.data.data.name,
+                                                                        accessToken: credentialResponse.credential,
+                                                                        type: 'FACEBOOK'
+                                                                    }
+                                                                    localStorage.setItem('user', JSON.stringify(userInfo))
+                                                                    window.location.reload()
+                                                                }
+                                                            )
+                                                        }
+                                                    }
+                                                )
+
+                                                // UserService.signup()
                                             }}
                                             onError={() => {
                                                 console.log('Login Failed');
@@ -774,6 +817,7 @@ export function MainLayout(props) {
                             <Form.Item
                                 name="password"
                                 label="Mật khẩu"
+                                hasFeedback
                                 rules={[
                                     {
                                         required: true,
@@ -784,12 +828,39 @@ export function MainLayout(props) {
                                 <Input.Password/>
                             </Form.Item>
                             <Form.Item
+                                name="confirm"
+                                label="Xác nhận mật khẩu"
+                                dependencies={['password']}
+                                hasFeedback
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Xác nhận mật khẩu không được bỏ trống',
+                                    },
+                                    ({ getFieldValue }) => ({
+                                        validator(_, value) {
+                                            if (!value || getFieldValue('password') === value) {
+                                                return Promise.resolve();
+                                            }
+
+                                            return Promise.reject(new Error('Xác nhận mật khẩu và mật khẩu không trùng khớp!'));
+                                        },
+                                    }),
+                                ]}
+                            >
+                                <Input.Password />
+                            </Form.Item>
+                            <Form.Item
                                 name="email"
                                 label="Email"
                                 rules={[
                                     {
+                                        type: 'email',
+                                        message: 'Chưa đúng định dạng email!',
+                                    },
+                                    {
                                         required: true,
-                                        message: 'Email không được đẻ trống!',
+                                        message: 'Email không được để trống!',
                                     },
                                 ]}
                             >

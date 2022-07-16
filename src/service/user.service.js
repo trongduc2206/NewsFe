@@ -6,6 +6,9 @@ class UserService {
     signup(request) {
         return axios.post(MAIN_URL + "/signup", request)
     }
+    decodeJwt(jwt) {
+        return axios.post(MAIN_URL + "/decode", jwt )
+    }
 }
 
 export default new UserService();
