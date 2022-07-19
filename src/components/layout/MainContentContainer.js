@@ -5,7 +5,7 @@ import {MainLayout} from "./layout";
 import InteractNewsService from "../../service/interact-news.service";
 
 const ScrollToTop = (props) => {
-    const {isEnterNews, enterTime, enterNews, leaveNews, newsId, isScroll, scroll} = props
+    const {isEnterNews, enterTime, enterNews, leaveNews, newsId, isScroll, scroll, isLiked, isShared} = props
     const location = useLocation();
     let params = useParams();
     useEffect(() => {
@@ -14,12 +14,13 @@ const ScrollToTop = (props) => {
         //check if previous location is belong to news detail path
         const currentUser = JSON.parse(localStorage.getItem('user'));
         if(currentUser) {
+            debugger
             if (isEnterNews) {
                 console.log("user have just come here from a news page")
                 const leaveTime = new Date()
                 console.log("enterTime",enterTime)
                 console.log("isScroll ", isScroll)
-                if ((leaveTime.getTime() - enterTime.getTime()) / 1000 > 10.0 && isScroll) {
+                if ((leaveTime.getTime() - enterTime.getTime()) / 1000 > 12.0 && isScroll) {
                     //call api to save read interact
                     console.log("user have read a news")
                     const request = {
@@ -32,6 +33,49 @@ const ScrollToTop = (props) => {
                         response => {
                             if (response.data.status && response.data.status.code === 'success') {
                                 console.log("user read in save to db")
+                            }
+                        }
+                    )
+                }
+                // handle like
+                const likeRequest = {
+                    userId: currentUser.id,
+                    newsId: newsId,
+                    interactTime: enterTime
+                }
+                console.log(isLiked)
+                if(isLiked) {
+                    likeRequest.type = 'LIKE'
+                    InteractNewsService.insertInteractNews(likeRequest).then(
+                        response => {
+                            if (response.data.status && response.data.status.code === 'success') {
+                                console.log("user like in save to db")
+                            }
+                        }
+                    )
+                } else {
+                    console.log("send dislike")
+                    likeRequest.type = 'DISLIKE'
+                    InteractNewsService.insertInteractNews(likeRequest).then(
+                        response => {
+                            if (response.data.status && response.data.status.code === 'success') {
+                                console.log("user dislike in update to db")
+                            }
+                        }
+                    )
+                }
+
+                if(isShared) {
+                    const shareRequest = {
+                        userId: currentUser.id,
+                        newsId: newsId,
+                        type: "SHARE",
+                        interactTime: enterTime
+                    }
+                    InteractNewsService.insertInteractNews(shareRequest).then(
+                        response => {
+                            if (response.data.status && response.data.status.code === 'success') {
+                                console.log("user share in save to db")
                             }
                         }
                     )
@@ -74,7 +118,9 @@ const mapStateToProps = (state) => {
         isEnterNews: state.interact.isEnterNewsDetail,
         enterTime: state.interact.enterTime,
         newsId: state.interact.newsId,
-        isScroll: state.interact.scrollNews
+        isScroll: state.interact.scrollNews,
+        isLiked: state.like.like,
+        isShared: state.like.share
     }
 }
 const mapDispatchToProps = (dispatch) => {

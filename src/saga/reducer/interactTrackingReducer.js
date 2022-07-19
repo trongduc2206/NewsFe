@@ -2,7 +2,7 @@ const initialState = {
     isEnterNewsDetail: false,
     enterTime: null,
     newsId: null,
-    scrollNews: false
+    scrollNews: false,
 }
 
 export default (state = initialState, action) => {

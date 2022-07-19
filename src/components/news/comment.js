@@ -60,7 +60,7 @@ export function CommentList(props) {
                     renderItem={(item) => (
                         <li>
                             <Comment
-                                actions={[<span key="comment-list-reply-to-0">Reply to</span>]}
+                                // actions={[<span key="comment-list-reply-to-0">Reply to</span>]}
                                 // author={item.username}
                                 author={renderAuthorCommentName(item.username)}
                                 // avatar={item.avatar}

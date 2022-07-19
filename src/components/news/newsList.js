@@ -9,40 +9,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 export function NewsList(props) {
     const {data, currentPage, total, topicKey, isPagination} = props;
     const [page, setPage] = useState(null)
-    // const {push, location: {search}} = {History}
-    // const queryParams = useMemo(() => QueryString.parse(search.slice(1)), [search]);
-    // const pushQueryParamsToUrl = useCallback((params) => {
-    //     push({
-    //         search: `?${QueryString.stringify(params)}`
-    //     });
-    // }, [push]);
 
-    // const data = [
-    //     {
-    //         title: 'Title 1',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 2',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 3',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 4',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 5',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 6',
-    //         content: 'Abstract 1'
-    //     },
-    // ];
     // const { confirm } = Modal;
     // const onDeleteNews = () => {
     //     confirm({

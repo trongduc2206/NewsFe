@@ -39,3 +39,18 @@ a:hover {
 .ant-list-item-meta-title {
     font-size: 17px !important;
 }
+
+.like-button-wrapper.clicked::before {
+    animation: click 300ms;
+}
+@keyframes click {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.96);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

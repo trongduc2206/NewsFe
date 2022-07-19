@@ -35,10 +35,18 @@
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/serviceWorkerRegistration.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/view/fxml/update_station.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/css/newsDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/newsDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/MainContentContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MainContentContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/news/newsDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news/newsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/newsShortcut.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsShortcut.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga/reducer/interactTrackingReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga/reducer/interactTrackingReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/interact-news.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/interact-news.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +57,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="SCSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -65,20 +74,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Workspace/NewsAdminFE/news-admin-fe",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsFE/news-fe&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\NewsFE\news-fe\src\saga" />
@@ -161,7 +171,11 @@
       <workItem from="1657725203355" duration="6164000" />
       <workItem from="1657818394694" duration="2973000" />
       <workItem from="1657942283872" duration="1146000" />
-      <workItem from="1657994229201" duration="3652000" />
+      <workItem from="1657994229201" duration="3909000" />
+      <workItem from="1658080470149" duration="452000" />
+      <workItem from="1658163614048" duration="2904000" />
+      <workItem from="1658203835710" duration="11262000" />
+      <workItem from="1658242710727" duration="2895000" />
     </task>
     <servers />
   </component>
@@ -184,12 +198,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/news/newsList.js</url>
-          <line>74</line>
+          <line>41</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/layout/layout.js</url>
-          <line>656</line>
+          <line>657</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

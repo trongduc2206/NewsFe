@@ -105,7 +105,8 @@ export function MainLayout(props) {
             icon: <ExclamationCircleOutlined/>,
             onOk() {
                 localStorage.removeItem("user");
-                window.location.reload();
+                // window.location.reload();
+                window.location.href ='/'
             },
             onCancel() {
                 // console.log('Cancel');
@@ -455,14 +456,14 @@ export function MainLayout(props) {
                         }}>
                             <div style={{display: 'flex', flexDirection: 'column' , justifyContent: 'center'}}>
                                 <a href="/">
-                                <LayoutTwoTone style={{ fontSize: '20px', marginLeft: '3px'}} twoToneColor='#096dd9'/>
+                                <LayoutTwoTone style={{ fontSize: '20px', marginLeft: '15px'}} twoToneColor='#096dd9'/>
                                 </a>
                                 {/*<h1 style={{ color:'#096dd9', marginLeft: '3px'}}>News</h1>*/}
                             </div>
                             <div style={{display: 'flex', flexDirection: 'column' , justifyContent: 'center'}}>
                                 {/*<LayoutTwoTone style={{ fontSize: '20px'}} twoToneColor='#096dd9'/>*/}
                                 <a href="/">
-                                <span style={{ color:'#096dd9', marginLeft: '3px', fontWeight:'bold', fontSize: '22px'}}>News</span>
+                                <span style={{ color:'#096dd9', marginLeft: '3px', fontWeight:'bold', fontSize: '22px', marginRight: '10px'}}>News</span>
                                 </a>
                             </div>
                             <Divider type="vertical" style={{marginTop: "8px", height: "80%"}}/>
@@ -473,7 +474,7 @@ export function MainLayout(props) {
                                 display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '14px',
                                 color: '#757575', width: '100%'
                             }}>
-                                <span>{today}</span>
+                                <span style={{marginLeft: '10px'}}>{today}</span>
                             </div>
                             <div
                                 style={{

@@ -2,7 +2,7 @@ import {Affix, Breadcrumb, Button, Divider, Form, Input, notification, Tag, Tool
 import {
     ArrowLeftOutlined,
     BookOutlined,
-    CommentOutlined, InfoCircleOutlined, InfoCircleTwoTone,
+    CommentOutlined, InfoCircleOutlined, InfoCircleTwoTone, LikeOutlined,
     LinkOutlined, PushpinOutlined, PushpinTwoTone,
     SaveOutlined,
     UpOutlined
@@ -24,6 +24,11 @@ import CommentService from "../../service/comment.service";
 import {useBeforeunload} from 'react-beforeunload';
 import InteractNewsService from "../../service/interact-news.service";
 import {NewsRelevant} from "./newsRelevant";
+import cn from "classnames";
+import LikeButton from "./likeButton";
+import {ReactComponent as Hand} from "./hand.svg";
+import React from "react";
+import '../css/likeButton.css'
 
 export function NewsDetail(props) {
     let navigate = useNavigate();
@@ -32,7 +37,7 @@ export function NewsDetail(props) {
     const [tags, setTags] = useState()
     const [openTime, setOpenTime] = useState(new Date())
 
-    const {topic, scroll, isScroll} = props
+    const {topic, scroll, isScroll, like, dislike, share} = props
     const [data, setData] = useState(null)
     const [sameTopicData, setSameTopicData] = useState([])
     const [relevantData, setRelevantData] = useState([])
@@ -40,34 +45,10 @@ export function NewsDetail(props) {
     const [saved, setSaved] = useState(null)
     const [parentTopic, setParentTopic] = useState(null)
     const [commentForm] = Form.useForm();
-    // const relevantData = [
-    //     {
-    //         title: 'Title 1',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 2',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 3',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 4',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 5',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 6',
-    //         content: 'Abstract 1'
-    //     },
-    // ];
+    const [liked, setLiked] = useState(null);
+    const [clicked, setClicked] = useState(false);
+    const [likeButtonDirty, setLikeButtonDirty] = useState(false);
 
-    const topViewsTitle = ['title 1', 'title 2', 'title 3'];
     const onBackClick = () => {
         navigate(-1);
     }
@@ -96,6 +77,19 @@ export function NewsDetail(props) {
         notification.success({
             message: 'Đã sao chép đường dẫn'
         })
+        const request = {
+            userId: currentUser.id,
+            newsId: params.id,
+            type: "SHARE",
+            interactTime: new Date()
+        }
+        InteractNewsService.insertInteractNews(request).then(
+            response => {
+                if (response.data.status && response.data.status.code === 'success') {
+                    console.log("user share in save to db")
+                }
+            }
+        )
     }
     const currentUser = JSON.parse(localStorage.getItem('user'));
 
@@ -135,6 +129,7 @@ export function NewsDetail(props) {
     }
     useBeforeunload((e) => {
         // e.preventDefault()
+
         console.log("close time ", new Date())
         const closeTime = new Date()
         if ((closeTime.getTime() - openTime.getTime()) / 1000 > 5.0 && isScroll) {
@@ -155,10 +150,38 @@ export function NewsDetail(props) {
         } else {
             console.log("unread")
         }
+        debugger
+           if(likeButtonDirty) {
+               const likeRequest = {
+                   userId: currentUser.id,
+                   newsId: params.id,
+                   interactTime: openTime
+               }
+               if (liked) {
+                   likeRequest.type = 'LIKE'
+                   InteractNewsService.insertInteractNews(likeRequest).then(
+                       response => {
+                           if (response.data.status && response.data.status.code === 'success') {
+                               console.log("user like in save to db")
+                           }
+                       }
+                   )
+               } else {
+                   likeRequest.type = 'DISLIKE'
+                   InteractNewsService.insertInteractNews(likeRequest).then(
+                       response => {
+                           if (response.data.status && response.data.status.code === 'success') {
+                               console.log("user dislike in save to db")
+                           }
+                       }
+                   )
+               }
+           }
     })
 
     let location = useLocation()
     useEffect(() => {
+        // setLiked(true)
         const newsId = params.id
         console.log(newsId)
         getData(newsId)
@@ -184,6 +207,14 @@ export function NewsDetail(props) {
                     console.log(error)
                 }
             )
+
+            InteractNewsService.checkLike(currentUser.id, newsId).then(
+                response => {
+                    if(response.data.data) {
+                        setLiked(true)
+                    }
+                }
+            ).catch(error => {console.log(error)})
         }
 
 
@@ -347,6 +378,7 @@ export function NewsDetail(props) {
             }
         )
     }
+    const particleList = Array.from(Array(10));
 
     return (
         <div style={{display: 'flex', background: 'white', padding: '10px'}}>
@@ -503,6 +535,51 @@ export function NewsDetail(props) {
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                     </div>
+                    <div>
+                        {/*<Button icon={<LikeOutlined />} onClick={() => {*/}
+
+                        {/*}}></Button>*/}
+                        <button
+                            onClick={() => {
+                                if(liked) {
+                                    dislike(params.id)
+                                } else {
+                                    like(params.id)
+                                }
+                                setLiked(!liked);
+                                setClicked(true);
+                                setLikeButtonDirty(true);
+                            }}
+                            onAnimationEnd={() => setClicked(false)}
+                            className={cn("like-button-wrapper", {
+                                liked,
+                                clicked,
+                            })}
+                        >
+                            {liked && (
+                                <div className="particles">
+                                    {particleList.map((_, index) => (
+                                        <div
+                                            className="particle-rotate"
+                                            style={{
+                                                transform: `rotate(${
+                                                    (360 / particleList.length) * index + 1
+                                                }deg)`,
+                                            }}
+                                        >
+                                            <div className="particle-tick" />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            <div className="like-button">
+                                <Hand />
+                                <span>Like</span>
+                                <span className={cn("suffix", { liked })}>d</span>
+                            </div>
+                        </button>
+                        {/*<LikeButton/>*/}
+                    </div>
                     <div style={{display: 'flex', marginTop: '20px'}}>
                         <Tooltip title="Trở về trước">
                             <Button icon={<ArrowLeftOutlined/>} onClick={onBackClick}></Button>
@@ -579,8 +656,8 @@ export function NewsDetail(props) {
                                     <CommentList
                                         data={data ? data.comments.sort((a, b) => (a.createTime < b.createTime) ? 1 : ((b.createTime <= a.createTime) ? -1 : 0)) : null}></CommentList>
                                 </div>
-                                : null)
-                            : null
+                                : <span>Chưa có bình luận</span>)
+                            : <span>Chưa có bình luận</span>
                     }
                     {
                         relevantData.length > 0 ?
@@ -644,6 +721,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         scroll: () => dispatch({type: "SCROLL"}),
+        like : (id) => dispatch({type: "LIKE", newsId: id}),
+        dislike : (id) => dispatch({type: "DISLIKE", newsId: id}),
+        share : (id) => dispatch({type: "SHARE", newsId: id})
         // leaveNews: () => dispatch({type: "LEAVE"}),
     }
 }

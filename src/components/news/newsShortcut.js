@@ -172,7 +172,11 @@ export function NewsShortcut(props) {
     const renderPreviewDescription = (data) => {
         if(data) {
             const descriptionSplited = data.summary.split(/[.]/)
-            return descriptionSplited[0]  + " ..."
+            if(descriptionSplited[0].length <= 160 && descriptionSplited[0].length > 128) {
+                return descriptionSplited[0] + " ..."
+            } else {
+                return data.summary.slice(0,160) + "..."
+            }
         }
     }
 
@@ -187,18 +191,17 @@ export function NewsShortcut(props) {
         <div>
             <Card
                 hoverable
-                // style={{
-                // width: 420,
-                // marginLeft: "10px",
-                // marginRight: "10px"
-                // }}
+                bodyStyle={{
+                    height: '242px'
+                }}
                 style={style}
                 cover={
                     <img
                         alt="example"
                         src={data.imageUrl}
                         style={{
-                            maxHeight: '150px'
+                            // maxHeight: '150px'
+                            height: '150px'
                         }}
                         onClick={onClickHandle}
                     />
