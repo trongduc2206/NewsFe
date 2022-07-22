@@ -37,7 +37,7 @@ export function NewsDetail(props) {
     const [tags, setTags] = useState()
     const [openTime, setOpenTime] = useState(new Date())
 
-    const {topic, scroll, isScroll, like, dislike, share} = props
+    const {topic, scroll, isScroll, like, dislike, share, likeClicked} = props
     const [data, setData] = useState(null)
     const [sameTopicData, setSameTopicData] = useState([])
     const [relevantData, setRelevantData] = useState([])
@@ -132,7 +132,7 @@ export function NewsDetail(props) {
 
         console.log("close time ", new Date())
         const closeTime = new Date()
-        if ((closeTime.getTime() - openTime.getTime()) / 1000 > 5.0 && isScroll) {
+        if ((closeTime.getTime() - openTime.getTime()) / 1000 > 12.0 && isScroll) {
             console.log("read")
             const request = {
                 userId: currentUser.id,
@@ -549,6 +549,7 @@ export function NewsDetail(props) {
                                 setLiked(!liked);
                                 setClicked(true);
                                 setLikeButtonDirty(true);
+                                likeClicked(params.id)
                             }}
                             onAnimationEnd={() => setClicked(false)}
                             className={cn("like-button-wrapper", {
@@ -722,6 +723,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         scroll: () => dispatch({type: "SCROLL"}),
         like : (id) => dispatch({type: "LIKE", newsId: id}),
+        likeClicked : (id) => dispatch({type: "CLICK_LIKE_BUTTON", newsId: id}),
         dislike : (id) => dispatch({type: "DISLIKE", newsId: id}),
         share : (id) => dispatch({type: "SHARE", newsId: id})
         // leaveNews: () => dispatch({type: "LEAVE"}),

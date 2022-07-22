@@ -21,6 +21,10 @@ class TopicService {
         return axios.get(MAIN_URL)
     }
 
+    getNonChildrenTopicSorted(userId) {
+        return axios.get(MAIN_URL + "sorted/" + userId)
+    }
+
     saveTopicClick(request) {
         return axios.post(MAIN_URL + "click", request)
     }

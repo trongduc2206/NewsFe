@@ -47,14 +47,24 @@ export function HomePage(props) {
     };
 
     useEffect(() => {
-        TopicService.getNonChildrenTopic().then(
-            response => {
-                if(response.data.data) {
-                    setTopics(response.data.data)
-                }
-            }
-        )
         const currentUser = JSON.parse(localStorage.getItem('user'));
+        if(currentUser) {
+            TopicService.getNonChildrenTopicSorted(currentUser.id).then(
+                response => {
+                    if (response.data.data) {
+                        setTopics(response.data.data)
+                    }
+                }
+            )
+        } else {
+            TopicService.getNonChildrenTopic().then(
+                response => {
+                    if (response.data.data) {
+                        setTopics(response.data.data)
+                    }
+                }
+            )
+        }
         if(currentUser) {
             startRecommend()
             NewsService.recommend(currentUser.id).then(

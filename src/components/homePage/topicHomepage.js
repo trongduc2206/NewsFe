@@ -8,33 +8,7 @@ import '../css/topicHomePage.css'
 export function TopicHomepage(props) {
     const {topicName, topicKey, recommendNewsIds, recommendNews, test, isRecommending} = props
     const [data, setData] = useState()
-    // const data = [
-    //     {
-    //         title: 'Title 1',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 2',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 3',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 4',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 5',
-    //         content: 'Abstract 1'
-    //     },
-    //     {
-    //         title: 'Title 6',
-    //         content: 'Abstract 1'
-    //     },
-    // ];
-    // const recommendNewsId = [85, 88]
+
     useEffect(() => {
         console.log(test)
         getData()

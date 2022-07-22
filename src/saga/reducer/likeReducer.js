@@ -1,7 +1,8 @@
 const initialState = {
     newsId: null,
     like: false,
-    share: false
+    share: false,
+    likeClicked: false
 }
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -18,6 +19,13 @@ export default (state = initialState, action) => {
                 ...state,
                 newsId: action.newsId,
                 like: false
+            }
+        case 'CLICK_LIKE_BUTTON':
+            console.log("click like button")
+            return {
+                ...state,
+                newsId: action.newsId,
+                likeClicked: true
             }
         case 'SHARE':
             console.log("share news")

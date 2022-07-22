@@ -27,6 +27,10 @@ class NewsService {
         return axios.get(MAIN_URL + "save/" + userId, {params: {offset: offset, page: page}})
     }
 
+    getLikedNew(userId, offset, page) {
+        return axios.get(MAIN_URL + "like/" + userId, {params: {offset: offset, page: page}})
+    }
+
     saveNews(saveNewsRequest) {
         return axios.post(MAIN_URL + "save", saveNewsRequest)
     }

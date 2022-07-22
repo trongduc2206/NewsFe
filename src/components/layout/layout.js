@@ -28,6 +28,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import UserService from "../../service/user.service";
 import {GoogleOAuthProvider, GoogleLogin} from "@react-oauth/google";
 import {useGoogleLogin} from "react-google-login";
+import {LikedNews} from "../news/likedNews";
 
 export function MainLayout(props) {
     const {login, isLogin, username, signup, isSignupSuccess, resetSignupStatus, logout} = props
@@ -503,12 +504,13 @@ export function MainLayout(props) {
                                             content={
                                                 <div
                                                 >
-                                                    <a href="#">
-                                                        <p>Thông tin tài khoản</p>
-                                                    </a>
                                                     <Divider style={{marginTop: "7px", marginBottom: "7px"}}></Divider>
                                                     <a href={'/save/' + currentUser.id}>
                                                         <p>Tin đã lưu</p>
+                                                    </a>
+                                                    <Divider style={{marginTop: "7px", marginBottom: "7px"}}></Divider>
+                                                    <a href={'/like/' + currentUser.id}>
+                                                        <p>Tin đã thích</p>
                                                     </a>
                                                     <Divider style={{marginTop: "7px", marginBottom: "7px"}}></Divider>
                                                     <a href="#" onClick={onLogout}>
@@ -610,6 +612,7 @@ export function MainLayout(props) {
                                 <Route path='/topic/:topicKey' element={<NewsTopics/>}/>
                                 <Route path='/search' element={<NewsSearchResult/>}/>
                                 <Route path='/save/:userId' element={<SavedNews/>}/>
+                                <Route path='/like/:userId' element={<LikedNews/>}/>
                             </Routes>
                         </ScrollToTop>
                         <Outlet/>
