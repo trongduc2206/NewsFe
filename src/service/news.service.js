@@ -47,6 +47,10 @@ class NewsService {
         return axios.get(MAIN_URL + "recommend/"+userId)
     }
 
+    getRecommend(userId) {
+        return axios.get(MAIN_URL + "get-recommend/"+userId)
+    }
+
     getRelevant(newsId) {
         return axios.get(MAIN_URL + "relevant/" + newsId)
     }

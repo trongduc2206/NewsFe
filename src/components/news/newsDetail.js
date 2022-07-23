@@ -596,23 +596,23 @@ export function NewsDetail(props) {
                         {/*<Button icon={<UpOutlined/>} style={{marginLeft: "15px"}} onClick={backToTopHanlde}> Trở về*/}
                         {/*    trên</Button>*/}
                     </div>
-                    <div style={{display: 'flex', marginTop: '30px'}}>
-                        <div>
-                            <h5 style={{color: '#bdbdbd', marginRight: '10px', fontSize: '12px'}}>Từ khóa: </h5>
-                        </div>
-                        <div>
-                            {data ? data.keyword.split(/[,]/).map((tag) => {
-                                return <Tag color="orange">
-                                    <a
-                                        class='link'
-                                        href="#">
-                                        {tag}
-                                    </a>
-                                </Tag>
-                            }) : null}
+                    {/*<div style={{display: 'flex', marginTop: '30px'}}>*/}
+                    {/*    <div>*/}
+                    {/*        <h5 style={{color: '#bdbdbd', marginRight: '10px', fontSize: '12px'}}>Từ khóa: </h5>*/}
+                    {/*    </div>*/}
+                    {/*    <div>*/}
+                    {/*        {data ? data.keyword.split(/[,]/).map((tag) => {*/}
+                    {/*            return <Tag color="orange">*/}
+                    {/*                <a*/}
+                    {/*                    class='link'*/}
+                    {/*                    href="#">*/}
+                    {/*                    {tag}*/}
+                    {/*                </a>*/}
+                    {/*            </Tag>*/}
+                    {/*        }) : null}*/}
 
-                        </div>
-                    </div>
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <div>
                         <Divider></Divider>
                     </div>

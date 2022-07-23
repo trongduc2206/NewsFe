@@ -67,7 +67,24 @@ export function HomePage(props) {
         }
         if(currentUser) {
             startRecommend()
-            NewsService.recommend(currentUser.id).then(
+            // NewsService.recommend(currentUser.id).then(
+            //     response => {
+            //         if(response.data.data) {
+            //             console.log("we have recommend news")
+            //             setRecommend(response.data.data)
+            //             const recommendNewsIds = response.data.data.map((news) => {
+            //                 console.log(news.id)
+            //                 return news.id
+            //             })
+            //             loadRecommendIds(recommendNewsIds)
+            //             setRecommendIds(recommendNewsIds)
+            //         }
+            //     }
+            // ).catch(
+            //     error => {
+            //         console.log(error)
+            //     }
+            NewsService.getRecommend(currentUser.id).then(
                 response => {
                     if(response.data.data) {
                         console.log("we have recommend news")

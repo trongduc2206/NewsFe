@@ -504,7 +504,7 @@ export function MainLayout(props) {
                                             content={
                                                 <div
                                                 >
-                                                    <Divider style={{marginTop: "7px", marginBottom: "7px"}}></Divider>
+                                                    {/*<Divider style={{marginTop: "7px", marginBottom: "7px"}}></Divider>*/}
                                                     <a href={'/save/' + currentUser.id}>
                                                         <p>Tin đã lưu</p>
                                                     </a>
@@ -526,10 +526,10 @@ export function MainLayout(props) {
                                         </Popover>
                                         : <a href="#" onClick={onLoginHandler}>Đăng nhập</a>}
 
-                                    {currentUser ?
-                                        <BellOutlined/>
-                                        : null
-                                    }
+                                    {/*{currentUser ?*/}
+                                    {/*    <BellOutlined/>*/}
+                                    {/*    : null*/}
+                                    {/*}*/}
                                 </Space>
                             </div>
                         </div>
