@@ -46,6 +46,8 @@ export function NewsSearchResult(props) {
         const searchPageUrl = '/search?q=' + values
         window.location.href = searchPageUrl
     }
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+
     useEffect(() => {
         console.log(searchParams.get('q'))
         setQuery(searchParams.get('q'))
@@ -57,18 +59,33 @@ export function NewsSearchResult(props) {
 
         const pageToCallApi = page ? parseInt(page) - 1 : 0
 
-        NewsService.search(searchParams.get('q'), 15, pageToCallApi).then(
-            response => {
-                if (response.data.data) {
-                    setData(response.data.data.content)
-                    setTotal(response.data.data.totalElements)
+        if(currentUser) {
+            NewsService.searchByUser(searchParams.get('q'), 15, pageToCallApi, currentUser.id).then(
+                response => {
+                    if (response.data.data) {
+                        setData(response.data.data.content)
+                        setTotal(response.data.data.totalElements)
+                    }
                 }
-            }
-        ).catch(
-            error => {
-                console.log(error)
-            }
-        )
+            ).catch(
+                error => {
+                    console.log(error)
+                }
+            )
+        } else {
+            NewsService.search(searchParams.get('q'), 15, pageToCallApi).then(
+                response => {
+                    if (response.data.data) {
+                        setData(response.data.data.content)
+                        setTotal(response.data.data.totalElements)
+                    }
+                }
+            ).catch(
+                error => {
+                    console.log(error)
+                }
+            )
+        }
 
     }, [])
     return (

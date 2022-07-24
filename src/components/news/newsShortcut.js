@@ -1,6 +1,6 @@
 import {Avatar, Card, Modal, notification, Tooltip} from "antd";
 import Meta from "antd/es/card/Meta";
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import '../css/newsShortcut.css'
@@ -111,27 +111,49 @@ export function NewsShortcut(props) {
 
     const renderActions = () => {
         if(data.savedTime) {
-            return [
-                <div>
-                    {
-                        data.savedTime ?
-                            <Tooltip title={moment(data.savedTime).format('YYYY-MM-DD HH:mm:ss')}>
-                                <span>Lưu {moment(data.savedTime).fromNow()}</span>
+            if(location.pathname) {
+                if (location.pathname.includes("/save/")) {
+                    return [
+                        <div>
+                            {
+                                data.savedTime ?
+                                    <Tooltip title={moment(data.savedTime).format('YYYY-MM-DD HH:mm:ss')}>
+                                        <span>Lưu {moment(data.savedTime).fromNow()}</span>
+                                    </Tooltip>
+                                    : null
+                            }
+                        </div>,
+                        <div>
+                            <Tooltip title={moment(data.createTime).format('YYYY-MM-DD HH:mm:ss')}>
+                                <span>Đăng {moment(data.createTime).fromNow()}</span>
                             </Tooltip>
-                            : null
-                    }
-                </div>,
-                <div>
-                    <Tooltip title={moment(data.createTime).format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>Đăng {moment(data.createTime).fromNow()}</span>
-                    </Tooltip>
-                </div>,
-                <div>
-                    <Tooltip title="Gỡ khỏi danh sách lưu">
-                        <DeleteOutlined onClick={onDeleteNews} />
-                    </Tooltip>
-                </div>
-            ]
+                        </div>,
+                        <div>
+                            <Tooltip title="Gỡ khỏi danh sách lưu">
+                                <DeleteOutlined onClick={onDeleteNews} />
+                            </Tooltip>
+                        </div>
+                    ]
+                } else {
+                    return [
+                        <div>
+                            {
+                                data.savedTime ?
+                                    <Tooltip title={moment(data.savedTime).format('YYYY-MM-DD HH:mm:ss')}>
+                                        <span>Lưu {moment(data.savedTime).fromNow()}</span>
+                                    </Tooltip>
+                                    : null
+                            }
+                        </div>,
+                        <div>
+                            <Tooltip title={moment(data.createTime).format('YYYY-MM-DD HH:mm:ss')}>
+                                <span>Đăng {moment(data.createTime).fromNow()}</span>
+                            </Tooltip>
+                        </div>
+                    ]
+                }
+            }
+
         } else if(currentUser && !saved) {
             return [
                 <div>
@@ -179,8 +201,11 @@ export function NewsShortcut(props) {
             }
         }
     }
-
+    const location = useLocation();
     useEffect(() => {
+        console.log(data)
+        console.log(location)
+
         // console.log("description ", data.summary)
         // const descriptionSplited = data.summary.split(/[.]/)
         // console.log("description sentences ", descriptionSplited)

@@ -535,52 +535,55 @@ export function NewsDetail(props) {
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                     </div>
-                    <div>
-                        {/*<Button icon={<LikeOutlined />} onClick={() => {*/}
+                    {   currentUser ?
+                        <div>
+                            {/*<Button icon={<LikeOutlined />} onClick={() => {*/}
 
-                        {/*}}></Button>*/}
-                        <button
-                            onClick={() => {
-                                if(liked) {
-                                    dislike(params.id)
-                                } else {
-                                    like(params.id)
-                                }
-                                setLiked(!liked);
-                                setClicked(true);
-                                setLikeButtonDirty(true);
-                                likeClicked(params.id)
-                            }}
-                            onAnimationEnd={() => setClicked(false)}
-                            className={cn("like-button-wrapper", {
-                                liked,
-                                clicked,
-                            })}
-                        >
-                            {liked && (
-                                <div className="particles">
-                                    {particleList.map((_, index) => (
-                                        <div
-                                            className="particle-rotate"
-                                            style={{
-                                                transform: `rotate(${
-                                                    (360 / particleList.length) * index + 1
-                                                }deg)`,
-                                            }}
-                                        >
-                                            <div className="particle-tick" />
-                                        </div>
-                                    ))}
+                            {/*}}></Button>*/}
+                            <button
+                                onClick={() => {
+                                    if (liked) {
+                                        dislike(params.id)
+                                    } else {
+                                        like(params.id)
+                                    }
+                                    setLiked(!liked);
+                                    setClicked(true);
+                                    setLikeButtonDirty(true);
+                                    likeClicked(params.id)
+                                }}
+                                onAnimationEnd={() => setClicked(false)}
+                                className={cn("like-button-wrapper", {
+                                    liked,
+                                    clicked,
+                                })}
+                            >
+                                {liked && (
+                                    <div className="particles">
+                                        {particleList.map((_, index) => (
+                                            <div
+                                                className="particle-rotate"
+                                                style={{
+                                                    transform: `rotate(${
+                                                        (360 / particleList.length) * index + 1
+                                                    }deg)`,
+                                                }}
+                                            >
+                                                <div className="particle-tick"/>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                                <div className="like-button">
+                                    <Hand/>
+                                    <span>Like</span>
+                                    <span className={cn("suffix", {liked})}>d</span>
                                 </div>
-                            )}
-                            <div className="like-button">
-                                <Hand />
-                                <span>Like</span>
-                                <span className={cn("suffix", { liked })}>d</span>
-                            </div>
-                        </button>
-                        {/*<LikeButton/>*/}
-                    </div>
+                            </button>
+                            {/*<LikeButton/>*/}
+                        </div>
+                        : null
+                    }
                     <div style={{display: 'flex', marginTop: '20px'}}>
                         <Tooltip title="Trở về trước">
                             <Button icon={<ArrowLeftOutlined/>} onClick={onBackClick}></Button>

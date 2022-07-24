@@ -49,6 +49,7 @@ export function TopicHomepage(props) {
         //     }
         // )
     }, [])
+    const currentUser = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         console.log("recommend state change to ", isRecommending )
@@ -61,60 +62,118 @@ export function TopicHomepage(props) {
                 topicKey: topicKey,
                 newsId: recommendNewsIds
             }
-            NewsService.getNewsByTopicExcept(request).then(
-                response => {
-                    if(response.data.data) {
-                        console.log("data after delete recommend news")
-                        setData(response.data.data)
+            if(currentUser) {
+                NewsService.getNewsByTopicExceptByUser(request, currentUser.id).then(
+                    response => {
+                        if (response.data.data) {
+                            console.log("data after delete recommend news")
+                            setData(response.data.data)
+                        }
                     }
-                }
-            ).catch(
-                error => {
-                    console.log(error)
-                }
-            )
+                ).catch(
+                    error => {
+                        console.log(error)
+                    }
+                )
+            } else {
+                NewsService.getNewsByTopicExcept(request).then(
+                    response => {
+                        if (response.data.data) {
+                            console.log("data after delete recommend news")
+                            setData(response.data.data)
+                        }
+                    }
+                ).catch(
+                    error => {
+                        console.log(error)
+                    }
+                )
+            }
         } else {
             // NewsService.getNewsByParentTopic(topicKey, 5, 0).then(
-            NewsService.getNewsByTopicKey(topicKey, 5, 0).then(
-                response => {
-                    if (response.data.data) {
-                        console.log("topic " + topicKey)
-                        console.log(recommendNewsIds)
-                        if (recommendNewsIds != null && recommendNewsIds.length > 0) {
-                            // if(recommendNews != null && recommendNews.length > 0) {
-                            console.log("we have recommend news ", recommendNewsIds)
-                            // console.log("we have recommend news ", recommendNews)
-                            // console.log("our original data ", response.data.data.content)
-                            console.log(response.data.data)
-                            console.log(response.data.data.content)
-                            if (response.data.data.content != null && response.data.data.content.length > 0) {
-                                console.log("start process data")
-                                let dataToDisplay = []
-                                response.data.data.content.map((news) => {
-                                    if (!recommendNewsIds.includes(news.id)) {
-                                        dataToDisplay.push(news)
-                                    }
-                                    // if(!recommendNews.includes(news)) {
-                                    //     return news
-                                    // }
-                                })
+            if (currentUser) {
+                NewsService.getNewsByTopicKeyByUser(topicKey, 5, 0, currentUser.id).then(
+                    response => {
+                        if (response.data.data) {
+                            console.log("topic " + topicKey)
+                            console.log(recommendNewsIds)
+                            if (recommendNewsIds != null && recommendNewsIds.length > 0) {
+                                // if(recommendNews != null && recommendNews.length > 0) {
+                                console.log("we have recommend news ", recommendNewsIds)
+                                // console.log("we have recommend news ", recommendNews)
+                                // console.log("our original data ", response.data.data.content)
+                                console.log(response.data.data)
+                                console.log(response.data.data.content)
+                                if (response.data.data.content != null && response.data.data.content.length > 0) {
+                                    console.log("start process data")
+                                    let dataToDisplay = []
+                                    response.data.data.content.map((news) => {
+                                        if (!recommendNewsIds.includes(news.id)) {
+                                            dataToDisplay.push(news)
+                                        }
+                                        // if(!recommendNews.includes(news)) {
+                                        //     return news
+                                        // }
+                                    })
 
-                                // setData(response.data.data.content)
-                                console.log("generate data to display ", dataToDisplay)
-                                setData(dataToDisplay)
+                                    // setData(response.data.data.content)
+                                    console.log("generate data to display ", dataToDisplay)
+                                    setData(dataToDisplay)
+                                } else {
+                                    setData(response.data.data.content)
+                                }
                             } else {
                                 setData(response.data.data.content)
                             }
-                        } else {
-                            setData(response.data.data.content)
                         }
                     }
-                }
-            ).catch(
-                error => {
-                    console.log(error)
-                }
-            )
+                ).catch(
+                    error => {
+                        console.log(error)
+                    }
+                )
+            } else {
+                NewsService.getNewsByTopicKey(topicKey, 5, 0).then(
+                    response => {
+                        if (response.data.data) {
+                            console.log("topic " + topicKey)
+                            console.log(recommendNewsIds)
+                            if (recommendNewsIds != null && recommendNewsIds.length > 0) {
+                                // if(recommendNews != null && recommendNews.length > 0) {
+                                console.log("we have recommend news ", recommendNewsIds)
+                                // console.log("we have recommend news ", recommendNews)
+                                // console.log("our original data ", response.data.data.content)
+                                console.log(response.data.data)
+                                console.log(response.data.data.content)
+                                if (response.data.data.content != null && response.data.data.content.length > 0) {
+                                    console.log("start process data")
+                                    let dataToDisplay = []
+                                    response.data.data.content.map((news) => {
+                                        if (!recommendNewsIds.includes(news.id)) {
+                                            dataToDisplay.push(news)
+                                        }
+                                        // if(!recommendNews.includes(news)) {
+                                        //     return news
+                                        // }
+                                    })
+
+                                    // setData(response.data.data.content)
+                                    console.log("generate data to display ", dataToDisplay)
+                                    setData(dataToDisplay)
+                                } else {
+                                    setData(response.data.data.content)
+                                }
+                            } else {
+                                setData(response.data.data.content)
+                            }
+                        }
+                    }
+                ).catch(
+                    error => {
+                        console.log(error)
+                    }
+                )
+            }
         }
     }
     return (

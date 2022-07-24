@@ -12,7 +12,8 @@ function checkLogin(userName, passWord) {
         url: 'http://localhost:8080/api/auth/signin',
         data: {
             username: userName,
-            password: passWord
+            password: passWord,
+            type: 'SYSTEM'
         }
     }).then(response => ({response})).catch(error => ({error}));
 }

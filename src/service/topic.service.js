@@ -22,15 +22,15 @@ class TopicService {
     }
 
     getNonChildrenTopicSorted(userId) {
-        return axios.get(MAIN_URL + "sorted/" + userId)
+        return axios.get(MAIN_URL + "sorted/" + userId, {headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken }})
     }
 
     saveTopicClick(request) {
-        return axios.post(MAIN_URL + "click", request)
+        return axios.post(MAIN_URL + "click", request, {headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken }})
     }
 
     getTopicDisplayUser(userId) {
-        return axios.get(MAIN_URL + "display/" + userId)
+        return axios.get(MAIN_URL + "display/" + userId, {headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem('user')).accessToken }})
     }
 
     getTopicLv1(topicKey) {

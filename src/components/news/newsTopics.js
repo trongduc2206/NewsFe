@@ -79,6 +79,8 @@ export function NewsTopics(props) {
             }
         })
     }
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+
     useEffect(() => {
         console.log(searchParams.get('page'))
         const page = searchParams.get('page')
@@ -106,20 +108,54 @@ export function NewsTopics(props) {
                             }
                         );
                         // NewsService.getNewsByParentTopic(response.data.data.topicKey, 15, pageToCallApi).then(
-                        NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
-                            newsResponse => {
-                                console.log(newsResponse)
-                                if (newsResponse.data.data) {
-                                    setData(newsResponse.data.data.content)
-                                    console.log(newsResponse.data.data.totalElements)
-                                    // setCurrentPage(4);
-                                    setTotal(newsResponse.data.data.totalElements)
-                                    // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
-                                    //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
-                                    // }
+                        if(currentUser) {
+                            NewsService.getNewsByTopicKeyByUser(response.data.data.topicKey, 15, pageToCallApi, currentUser.id).then(
+                                newsResponse => {
+                                    console.log(newsResponse)
+                                    if (newsResponse.data.data) {
+                                        setData(newsResponse.data.data.content)
+                                        console.log(newsResponse.data.data.totalElements)
+                                        // setCurrentPage(4);
+                                        setTotal(newsResponse.data.data.totalElements)
+                                        // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                        //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                        // }
+                                    }
                                 }
+                            )
+                        } else {
+                            if(currentUser) {
+                                NewsService.getNewsByTopicKeyByUser(response.data.data.topicKey, 15, pageToCallApi, currentUser.id).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            setData(newsResponse.data.data.content)
+                                            console.log(newsResponse.data.data.totalElements)
+                                            // setCurrentPage(4);
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
+                                    }
+                                )
+                            } else {
+                                NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            setData(newsResponse.data.data.content)
+                                            console.log(newsResponse.data.data.totalElements)
+                                            // setCurrentPage(4);
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
+                                    }
+                                )
                             }
-                        )
+                        }
                     }
                     if (response.data.data.parentKey !== null) {
                         // debugger
@@ -143,19 +179,35 @@ export function NewsTopics(props) {
                             ).catch(error => {
                                 console.log(error)
                             })
-                            NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
-                                newsResponse => {
-                                    console.log(newsResponse)
-                                    if (newsResponse.data.data) {
-                                        console.log(newsResponse.data.data.totalElements)
-                                        setData(newsResponse.data.data.content)
-                                        setTotal(newsResponse.data.data.totalElements)
-                                        // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
-                                        //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
-                                        // }
+                            if(currentUser) {
+                                NewsService.getNewsByTopicKeyByUser(response.data.data.topicKey, 15, pageToCallApi, currentUser.id).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            console.log(newsResponse.data.data.totalElements)
+                                            setData(newsResponse.data.data.content)
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
                                     }
-                                }
-                            )
+                                )
+                            } else {
+                                NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            console.log(newsResponse.data.data.totalElements)
+                                            setData(newsResponse.data.data.content)
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
+                                    }
+                                )
+                            }
                         } else {
                             TopicService.getTopicLv1(response.data.data.topicKey).then(
                                 topicLv1Response => {
@@ -180,19 +232,35 @@ export function NewsTopics(props) {
                                     setTopicLv3(topicLv3Response.data.data)
                                 }
                             )
-                            NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
-                                newsResponse => {
-                                    console.log(newsResponse)
-                                    if (newsResponse.data.data) {
-                                        console.log(newsResponse.data.data.totalElements)
-                                        setData(newsResponse.data.data.content)
-                                        setTotal(newsResponse.data.data.totalElements)
-                                        // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
-                                        //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
-                                        // }
+                            if(currentUser) {
+                                NewsService.getNewsByTopicKeyByUser(response.data.data.topicKey, 15, pageToCallApi, currentUser.id).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            console.log(newsResponse.data.data.totalElements)
+                                            setData(newsResponse.data.data.content)
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
                                     }
-                                }
-                            )
+                                )
+                            } else {
+                                NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
+                                    newsResponse => {
+                                        console.log(newsResponse)
+                                        if (newsResponse.data.data) {
+                                            console.log(newsResponse.data.data.totalElements)
+                                            setData(newsResponse.data.data.content)
+                                            setTotal(newsResponse.data.data.totalElements)
+                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
+                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
+                                            // }
+                                        }
+                                    }
+                                )
+                            }
                         }
                     }
                 }
@@ -214,33 +282,6 @@ export function NewsTopics(props) {
                 }
             }
         )
-        // setSelectedTopicKey(selectedKeyArray);
-
-        // NewsService.getNewsByParentTopic()
-        // TopicService.getTopicByParentKey(topic.topicKey).then(
-        //     responseChildren => {
-        //         console.log(responseChildren)
-        //         setTopicChildren(responseChildren.data.data);
-        //     }
-        // );
-
-        //call api to save topic click
-        // const currentUser = JSON.parse(localStorage.getItem('user'));
-        // if(currentUser) {
-        //     const request = {
-        //         "userId": currentUser.id,
-        //         "topicKey": paramsSplit[0]
-        //     }
-        //     TopicService.saveTopicClick(request).then(
-        //         response => {
-        //             console.log("saved topic click")
-        //         }
-        //     ).catch(
-        //         error => {
-        //             console.log(error)
-        //         }
-        //     )
-        // }
 
     }, [])
     return (

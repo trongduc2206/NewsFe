@@ -54,17 +54,33 @@ export function MainLayout(props) {
             thirdPartyId: userInfo.thirdPartyId,
             type: 'FACEBOOK',
             username: userInfo.username,
-            email: userInfo.email
+            email: userInfo.email,
+            password: userInfo.email + 'FACEBOOK'
         }).then(
             response => {
                 const returnId = response.data.data;
                 if (returnId) {
-                    userInfo.id = returnId
-                    localStorage.setItem("user", JSON.stringify(userInfo));
-                    window.location.reload();
+                    UserService.signin({
+                        username: userInfo.username,
+                        email: userInfo.email,
+                        type: 'FACEBOOK',
+                        password: userInfo.email + 'FACEBOOK'
+                    }).then(
+                        signinResponse => {
+                            if(signinResponse.data.data) {
+                                console.log(signinResponse.data.data)
+                                localStorage.setItem("user", JSON.stringify(signinResponse.data.data))
+                                window.location.reload();
+                            }
+                        }
+                    )
+                    // userInfo.id = returnId
+                    // localStorage.setItem("user", JSON.stringify(userInfo));
                 }
             }
         )
+
+
         // localStorage.setItem("user", JSON.stringify(userInfo));
         // window.location.reload();
     }
@@ -756,20 +772,38 @@ export function MainLayout(props) {
                                                                 type: 'GOOGLE',
                                                                 thirdPartyId: credentialResponse.clientId,
                                                                 email: response.data.data.email,
-                                                                username: response.data.data.name
+                                                                username: response.data.data.name,
+                                                                password: response.data.data.email + 'GOOGLE'
                                                             }
                                                             UserService.signup(signupRequest).then(
                                                                 signupResponse => {
-                                                                    const userInfo = {
-                                                                        id: signupResponse.data.data,
-                                                                        thirdPartyId: credentialResponse.clientId,
-                                                                        email: response.data.data.email,
-                                                                        username: response.data.data.name,
-                                                                        accessToken: credentialResponse.credential,
-                                                                        type: 'FACEBOOK'
+                                                                    const returnId = response.data.data;
+                                                                    if (returnId) {
+                                                                        UserService.signin({
+                                                                            username: response.data.data.name,
+                                                                            email: response.data.data.email,
+                                                                            type: 'GOOGLE',
+                                                                            password: response.data.data.email + 'GOOGLE'
+                                                                        }).then(
+                                                                            signinResponse => {
+                                                                                if (signinResponse.data.data) {
+                                                                                    console.log(signinResponse.data.data)
+                                                                                    localStorage.setItem("user", JSON.stringify(signinResponse.data.data))
+                                                                                    window.location.reload();
+                                                                                }
+                                                                            }
+                                                                        )
+                                                                        // const userInfo = {
+                                                                        //     id: signupResponse.data.data,
+                                                                        //     thirdPartyId: credentialResponse.clientId,
+                                                                        //     email: response.data.data.email,
+                                                                        //     username: response.data.data.name,
+                                                                        //     accessToken: credentialResponse.credential,
+                                                                        //     type: 'GOOGLE'
+                                                                        // }
+                                                                        // localStorage.setItem('user', JSON.stringify(userInfo))
+                                                                        // window.location.reload()
                                                                     }
-                                                                    localStorage.setItem('user', JSON.stringify(userInfo))
-                                                                    window.location.reload()
                                                                 }
                                                             )
                                                         }
