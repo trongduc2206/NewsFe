@@ -35,18 +35,11 @@
       <change afterPath="$PROJECT_DIR$/../../..//Workspace/learning-pwa/src/serviceWorkerRegistration.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../..//tkxdpm-k63s-20211-13/src/Homework06/VuTrongDuc/view/fxml/update_station.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homePage/topicHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage/topicHomepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homePage/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage/homePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/news/newsDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsDetail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/news/newsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/news/newsShortcut.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsShortcut.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/news/newsTopics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/newsTopics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/saga/loginSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga/loginSaga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/comment.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/comment.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/interact-news.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/interact-news.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/news.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/news.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/topic.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/topic.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/news/savedNews.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/news/savedNews.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,21 +67,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/NewsFE/news-fe&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Workspace/NewsAdminFE/news-admin-fe",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "E:\\Webstorm\\WebStorm 2022.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\NewsFE\news-fe\src\saga" />
@@ -182,7 +175,9 @@
       <workItem from="1658562874933" duration="736000" />
       <workItem from="1658586139784" duration="789000" />
       <workItem from="1658593765344" duration="4814000" />
-      <workItem from="1658647677455" duration="10467000" />
+      <workItem from="1658647677455" duration="10884000" />
+      <workItem from="1658671144540" duration="1857000" />
+      <workItem from="1658768424058" duration="1567000" />
     </task>
     <servers />
   </component>

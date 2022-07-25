@@ -2,7 +2,7 @@ import React from "react";
 import NewsList from "./newsList";
 import {useEffect, useState} from "react";
 import NewsService from "../../service/news.service";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {Divider, Modal, notification} from "antd";
 import {ExclamationCircleOutlined} from "@ant-design/icons";
 import {connect} from "react-redux";
@@ -19,7 +19,7 @@ export function SavedNews(props) {
     let params = useParams();
     const { confirm } = Modal;
     // const onDeleteNews = (newsId) => {
-
+    let navigate = useNavigate();
     const getData = () => {
         if(currentUser.id === parseInt(params.userId)) {
             const page = searchParams.get('page')
@@ -38,6 +38,11 @@ export function SavedNews(props) {
             ).catch(
                 error => {
                     console.log(error)
+                    if(error.response.status === 401) {
+                        console.log('token expired')
+                        localStorage.removeItem("user");
+                        navigate("/")
+                    }
                 }
             )
         }

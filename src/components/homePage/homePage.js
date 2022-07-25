@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import TopicService from "../../service/topic.service";
 import NewsService from "../../service/news.service";
 import {NewsList} from "../news/newsList";
+import {useNavigate} from "react-router-dom";
 
 export function HomePage(props) {
     const {loadRecommendIds, startRecommend} = props
@@ -45,7 +46,7 @@ export function HomePage(props) {
     const onChange = (currentSlide) => {
         console.log(currentSlide);
     };
-
+    let navigate = useNavigate();
     useEffect(() => {
         const currentUser = JSON.parse(localStorage.getItem('user'));
         if(currentUser) {
@@ -53,6 +54,14 @@ export function HomePage(props) {
                 response => {
                     if (response.data.data) {
                         setTopics(response.data.data)
+                    }
+                }
+            ).catch(
+                error => {
+                    if(error.response.status === 401) {
+                        console.log('token expired')
+                        localStorage.removeItem("user");
+                        navigate("/")
                     }
                 }
             )
@@ -100,6 +109,11 @@ export function HomePage(props) {
             ).catch(
                 error => {
                     console.log(error)
+                    if(error.response.status === 401) {
+                        console.log('token expired')
+                        localStorage.removeItem("user");
+                        navigate("/")
+                    }
                 }
             )
         }

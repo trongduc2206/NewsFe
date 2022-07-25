@@ -3,7 +3,7 @@ import {Divider, List, Menu} from "antd";
 import {NewsShortcut} from "./newsShortcut";
 import NewsList from "./newsList";
 import {connect} from "react-redux";
-import {Link, Outlet, useParams, useSearchParams} from "react-router-dom";
+import {Link, Outlet, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import TopicService from "../../service/topic.service";
 import NewsService from "../../service/news.service";
 
@@ -80,7 +80,7 @@ export function NewsTopics(props) {
         })
     }
     const currentUser = JSON.parse(localStorage.getItem('user'));
-
+    let navigate = useNavigate();
     useEffect(() => {
         console.log(searchParams.get('page'))
         const page = searchParams.get('page')
@@ -122,6 +122,14 @@ export function NewsTopics(props) {
                                         // }
                                     }
                                 }
+                            ).catch(
+                                error => {
+                                    if(error.response.status === 401) {
+                                        console.log('token expired')
+                                        localStorage.removeItem("user");
+                                        navigate("/")
+                                    }
+                                }
                             )
                         } else {
                             if(currentUser) {
@@ -138,6 +146,14 @@ export function NewsTopics(props) {
                                             // }
                                         }
                                     }
+                                ).catch(
+                                    error => {
+                                        if(error.response.status === 401) {
+                                            console.log('token expired')
+                                            localStorage.removeItem("user");
+                                            navigate("/")
+                                        }
+                                    }
                                 )
                             } else {
                                 NewsService.getNewsByTopicKey(response.data.data.topicKey, 15, pageToCallApi).then(
@@ -151,6 +167,14 @@ export function NewsTopics(props) {
                                             // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
                                             //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
                                             // }
+                                        }
+                                    }
+                                ).catch(
+                                    error => {
+                                        if(error.response.status === 401) {
+                                            console.log('token expired')
+                                            localStorage.removeItem("user");
+                                            navigate("/")
                                         }
                                     }
                                 )
@@ -190,6 +214,14 @@ export function NewsTopics(props) {
                                             // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
                                             //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
                                             // }
+                                        }
+                                    }
+                                ).catch(
+                                    error => {
+                                        if(error.response.status === 401) {
+                                            console.log('token expired')
+                                            localStorage.removeItem("user");
+                                            navigate("/")
                                         }
                                     }
                                 )
@@ -240,9 +272,14 @@ export function NewsTopics(props) {
                                             console.log(newsResponse.data.data.totalElements)
                                             setData(newsResponse.data.data.content)
                                             setTotal(newsResponse.data.data.totalElements)
-                                            // if(newsResponse.data.data.totalElements && paramsSplit[2]) {
-                                            //     setPagination(paramsSplit[2], newsResponse.data.data.totalElements)
-                                            // }
+                                        }
+                                    }
+                                ).catch(
+                                    error => {
+                                        if(error.response.status === 401) {
+                                            console.log('token expired')
+                                            localStorage.removeItem("user");
+                                            navigate("/")
                                         }
                                     }
                                 )

@@ -151,32 +151,32 @@ export function NewsDetail(props) {
             console.log("unread")
         }
         debugger
-           if(likeButtonDirty) {
-               const likeRequest = {
-                   userId: currentUser.id,
-                   newsId: params.id,
-                   interactTime: openTime
-               }
-               if (liked) {
-                   likeRequest.type = 'LIKE'
-                   InteractNewsService.insertInteractNews(likeRequest).then(
-                       response => {
-                           if (response.data.status && response.data.status.code === 'success') {
-                               console.log("user like in save to db")
-                           }
-                       }
-                   )
-               } else {
-                   likeRequest.type = 'DISLIKE'
-                   InteractNewsService.insertInteractNews(likeRequest).then(
-                       response => {
-                           if (response.data.status && response.data.status.code === 'success') {
-                               console.log("user dislike in save to db")
-                           }
-                       }
-                   )
-               }
-           }
+        if (likeButtonDirty) {
+            const likeRequest = {
+                userId: currentUser.id,
+                newsId: params.id,
+                interactTime: openTime
+            }
+            if (liked) {
+                likeRequest.type = 'LIKE'
+                InteractNewsService.insertInteractNews(likeRequest).then(
+                    response => {
+                        if (response.data.status && response.data.status.code === 'success') {
+                            console.log("user like in save to db")
+                        }
+                    }
+                )
+            } else {
+                likeRequest.type = 'DISLIKE'
+                InteractNewsService.insertInteractNews(likeRequest).then(
+                    response => {
+                        if (response.data.status && response.data.status.code === 'success') {
+                            console.log("user dislike in save to db")
+                        }
+                    }
+                )
+            }
+        }
     })
 
     let location = useLocation()
@@ -205,16 +205,29 @@ export function NewsDetail(props) {
             ).catch(
                 error => {
                     console.log(error)
+                    if (error.response.status === 401) {
+                        console.log('token expired')
+                        localStorage.removeItem("user");
+                        navigate("/")
+                    }
                 }
             )
 
             InteractNewsService.checkLike(currentUser.id, newsId).then(
                 response => {
-                    if(response.data.data) {
+                    if (response.data.data) {
                         setLiked(true)
                     }
                 }
-            ).catch(error => {console.log(error)})
+            ).catch(error => {
+                    console.log(error)
+                    if (error.response.status === 401) {
+                        console.log('token expired')
+                        localStorage.removeItem("user");
+                        navigate("/")
+                    }
+                }
+            )
         }
 
 
@@ -535,7 +548,7 @@ export function NewsDetail(props) {
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                         {/*<img style={{maxHeight: "450px", maxWidth: "700px"}} src="https://joeschmoe.io/api/v1/random"/>*/}
                     </div>
-                    {   currentUser ?
+                    {currentUser ?
                         <div>
                             {/*<Button icon={<LikeOutlined />} onClick={() => {*/}
 
@@ -725,10 +738,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         scroll: () => dispatch({type: "SCROLL"}),
-        like : (id) => dispatch({type: "LIKE", newsId: id}),
-        likeClicked : (id) => dispatch({type: "CLICK_LIKE_BUTTON", newsId: id}),
-        dislike : (id) => dispatch({type: "DISLIKE", newsId: id}),
-        share : (id) => dispatch({type: "SHARE", newsId: id})
+        like: (id) => dispatch({type: "LIKE", newsId: id}),
+        likeClicked: (id) => dispatch({type: "CLICK_LIKE_BUTTON", newsId: id}),
+        dislike: (id) => dispatch({type: "DISLIKE", newsId: id}),
+        share: (id) => dispatch({type: "SHARE", newsId: id})
         // leaveNews: () => dispatch({type: "LEAVE"}),
     }
 }
