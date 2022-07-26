@@ -150,7 +150,7 @@ export function NewsDetail(props) {
         } else {
             console.log("unread")
         }
-        debugger
+        // debugger
         if (likeButtonDirty) {
             const likeRequest = {
                 userId: currentUser.id,
@@ -602,8 +602,20 @@ export function NewsDetail(props) {
                             <Button icon={<ArrowLeftOutlined/>} onClick={onBackClick}></Button>
                         </Tooltip>
                         {
-                            currentUser ?
-                                <Button icon={<SaveOutlined/>} style={{marginLeft: '15px'}}>Lưu tin</Button>
+                            currentUser ? ( saved ?
+                                        <Tooltip title={"Bạn đã lưu tin này vào " + saved}>
+
+                                            <PushpinTwoTone style={{
+                                                // display: 'block'
+                                                // ,marginLeft: 'auto'
+                                                marginLeft: '10px',
+                                                fontSize: '2vw', marginBottom: '10px'
+                                            }}/>
+
+                                        </Tooltip>
+                                :
+                                <Button icon={<SaveOutlined/>} style={{marginLeft: '15px'}}  onClick={onSaveNews}>Lưu tin</Button>
+                                )
                                 : null
                         }
                         <Tooltip title="Sao chép link">
